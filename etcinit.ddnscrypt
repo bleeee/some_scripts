@@ -1,0 +1,15 @@
+#!/bin/sh /etc/rc.common  
+# /init.d/dnscrypt  
+START=99
+  
+  start() {  
+output=`tar -zxvf /root/dnscrypt.tar.gz -C /tmp`
+output=`cp /root/dnscrypt-proxy.toml /tmp/linux-mipsle`
+/tmp/linux-mipsle/dnscrypt-proxy  >/dev/null 2>&1 &
+         }  
+           
+  stop() {  
+killall dnscrypt-proxy  
+rm -rf /tmp/linux-mipsle
+rm -rf /root/dnscrypt-proxy.log
+         }
