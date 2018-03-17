@@ -1,0 +1,11 @@
+#!/bin/sh /etc/rc.common  
+# /init.d/route6  
+START=99
+  
+  start() {  
+	route6 >/dev/null 2>&1 &
+         }  
+           
+  stop() {  
+         killall route6  
+         }
