@@ -1,0 +1,22 @@
+rm -rf /jffs/ovpn/openvpn.log
+iptables -D INPUT -i tun0 -j ACCEPT
+iptables -D FORWARD -i tun0 -j ACCEPT
+iptables -t nat -D POSTROUTING -s 192.168.50.0/24 -o tun0 -j MASQUERADE
+iptables -D INPUT -i tun0 -j ACCEPT
+iptables -D FORWARD -i tun0 -j ACCEPT
+iptables -t nat -D POSTROUTING -s 192.168.50.0/24 -o tun0 -j MASQUERADE
+echo $1 
+insmod tun
+echo `openvpn --config /jffs/ovpn/$1.ovpn --daemon vps`
+while true
+	do
+		sleep 1	
+		statuss=`ifconfig| grep tun0`
+		if [[ -n "${statuss}" ]]; then
+			echo "link established"
+			break
+		fi
+	done
+iptables -I INPUT -i tun0 -j ACCEPT
+iptables -I FORWARD -i tun0 -j ACCEPT
+iptables -t nat -I POSTROUTING -s 192.168.50.0/24 -o tun0 -j MASQUERADE
