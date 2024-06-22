@@ -12,8 +12,8 @@ sed -i 'N;$!P;$!D;$i sudo nohup python3 /root/Fan_HAT/python/main.py >dev/null 2
 sed -i 's/Temp(Celsius)/(°C)CPU/g' /root/Fan_HAT/python/main.py
 sed -i 's/,16)/,8)/g' /root/Fan_HAT/python/main.py
 sed -i 's/(85,/(47,/g' /root/Fan_HAT/python/main.py
-mkdir carcam
-cd carcam
+mkdir /home/carcam
+cd /home/carcam
 https://github.com/bluenviron/mediamtx/releases/download/v1.8.3/mediamtx_v1.8.3_linux_arm64v8.tar.gz
 tar zxvf mediamtx_v1.8.3_linux_arm64v8.tar.gz
 wget https://github.com/bleeee/some_scripts/raw/master/stream.sh.live
@@ -22,7 +22,7 @@ cp stream.sh.live stream.sh
 chmod +x stream.sh
 chmod +x stream.sh.live
 chmod +x stream.sh.debug
-cd ..
+cd /root
 wget -O /etc/systemd/system/stream.service https://github.com/bleeee/some_scripts/raw/master/stream.service
 wget -O /etc/wireguard/wg0.conf https://github.com/bleeee/some_scripts/raw/master/wg0.conf
 wget -O /root/check_ping.sh https://github.com/bleeee/some_scripts/raw/master/check_ping.sh
