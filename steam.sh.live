@@ -1,0 +1,8 @@
+#!/bin/bash
+/root/carcam/mediamtx &
+
+# 等待 mediamtx 启动
+sleep 2
+# 设置参数
+
+libcamera-vid -t 0 --width 1920 --height 1080 --inline --framerate 5 -n -o - | ffmpeg -re -i - -vcodec libx264 -preset fast -b:v 500k -tune zerolatency -f rtsp rtsp://:8554/mystream
