@@ -14,7 +14,7 @@ sed -i 's/,16)/,8)/g' /root/Fan_HAT/python/main.py
 sed -i 's/(85,/(47,/g' /root/Fan_HAT/python/main.py
 mkdir /home/carcam
 cd /home/carcam
-https://github.com/bluenviron/mediamtx/releases/download/v1.8.3/mediamtx_v1.8.3_linux_arm64v8.tar.gz
+wget https://github.com/bluenviron/mediamtx/releases/download/v1.8.3/mediamtx_v1.8.3_linux_arm64v8.tar.gz
 tar zxvf mediamtx_v1.8.3_linux_arm64v8.tar.gz
 wget https://github.com/bleeee/some_scripts/raw/master/stream.sh.live
 wget https://github.com/bleeee/some_scripts/raw/master/stream.sh.debug
