@@ -28,10 +28,10 @@ read -p "请输入私钥: " PrivateKey
 read -p "请输入公钥: " PublicKey 
 read -p "请输入PSK: " PresharedKey 
 read -p "请输入地址: " Endpoint
-sed -i 's/^aa=$/aa=xx/' /etc/wireguard/wg0.conf
-sed -i 's/^aa=$/aa=xx/' /etc/wireguard/wg0.conf
-sed -i 's/^aa=$/aa=xx/' /etc/wireguard/wg0.conf
-sed -i 's/^aa=$/aa=xx/' /etc/wireguard/wg0.conf
+sed -i "s|^PrivateKey = .*|PrivateKey = $PrivateKey|" /etc/wireguard/wg0.conf
+sed -i "s|^PublicKey = .*|PublicKey = $PublicKey |" /etc/wireguard/wg0.conf
+sed -i "s|^PresharedKey = .*|PresharedKey = $PresharedKey |" /etc/wireguard/wg0.conf
+sed -i "s|^Endpoint = .*|Endpoint = $Endpoint|" /etc/wireguard/wg0.conf
 
 systemctl daemon-reload
 systemctl start stream.service
