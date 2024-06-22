@@ -29,6 +29,8 @@ wget -O /root/check_ping.sh https://github.com/bleeee/some_scripts/raw/master/ch
 wget -O /root/temp.sh https://github.com/bleeee/some_scripts/raw/master/temp.sh
 chmod +x check_ping.sh
 chmod +x temp.sh
+echo "* * * * * /root/check_ping.sh" | crontab -
+echo "*/10 * * * * /root/temp.sh" | crontab -
 read -p "请输入私钥: " PrivateKey 
 read -p "请输入公钥: " PublicKey 
 read -p "请输入PSK: " PresharedKey 
