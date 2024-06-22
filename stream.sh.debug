@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# 设置参数
+FRAMERATE=30
+RTSP_PORT=8554
+STREAM_NAME=mystream
+
+# 启动 libcamera-vid 推流
+libcamera-vid -t 0 --inline --framerate $FRAMERATE -o --width 1920 --height 1080 -n - | \
+cvlc -vvv stream:///dev/stdin --sout "#rtp{sdp=rtsp://:$RTSP_PORT/$STREAM_NAME}" :demux=h264
