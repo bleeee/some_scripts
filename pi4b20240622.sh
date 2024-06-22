@@ -9,3 +9,6 @@ sudo make && sudo make check && sudo make install
 cd ..
 7z x Fan_HAT.7z  -r -o./Fan_HAT
 sed -i 'N;$!P;$!D;$i sudo nohup python3 /root/Fan_HAT/python/main.py >dev/null 2>&1 &' /etc/rc.local
+sed -i 's/Temp(Celsius)/(°C)CPU/g' /root/Fan_HAT/python/main.py
+sed -i 's/,16)/,8)/g' /root/Fan_HAT/python/main.py
+sed -i 's/(85,/(47,/g' /root/Fan_HAT/python/main.py
