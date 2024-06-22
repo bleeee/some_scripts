@@ -22,8 +22,13 @@ cp stream.sh.live stream.sh
 chmod +x stream.sh
 chmod +x stream.sh.live
 chmod +x stream.sh.debug
+cd ..
 wget -O /etc/systemd/system/stream.service https://github.com/bleeee/some_scripts/raw/master/stream.service
 wget -O /etc/wireguard/wg0.conf https://github.com/bleeee/some_scripts/raw/master/wg0.conf
+wget -O /root/check_ping.sh https://github.com/bleeee/some_scripts/raw/master/check_ping.sh
+wget -O /root/temp.sh https://github.com/bleeee/some_scripts/raw/master/temp.sh
+chmod +x check_ping.sh
+chmod +x temp.sh
 read -p "请输入私钥: " PrivateKey 
 read -p "请输入公钥: " PublicKey 
 read -p "请输入PSK: " PresharedKey 
@@ -32,7 +37,6 @@ sed -i "s|^PrivateKey = .*|PrivateKey = $PrivateKey|" /etc/wireguard/wg0.conf
 sed -i "s|^PublicKey = .*|PublicKey = $PublicKey |" /etc/wireguard/wg0.conf
 sed -i "s|^PresharedKey = .*|PresharedKey = $PresharedKey |" /etc/wireguard/wg0.conf
 sed -i "s|^Endpoint = .*|Endpoint = $Endpoint|" /etc/wireguard/wg0.conf
-
+systemctl enable wg-quick@wg0
 systemctl daemon-reload
-systemctl start stream.service
 systemctl enable stream.service
