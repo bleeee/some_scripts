@@ -3,12 +3,12 @@ Description=Stream Video Service
 After=network.target
 
 [Service]
-ExecStart=/root/carcam/stream.sh
-WorkingDirectory=/root/carcam
+ExecStart=/home/carcam/stream.sh
+WorkingDirectory=/home/carcam
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
-User=root
+User=carcam
 
 [Install]
 WantedBy=multi-user.target
