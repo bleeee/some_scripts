@@ -45,6 +45,6 @@ systemctl enable stream.service
 #CONNECTION_NAME=$(nmcli connection show | grep usb0 | awk '{$NF=""; $(NF-1)=""; $(NF-2)=""; print $0}' | sed 's/[[:space:]]*$//')
 #nmcli connection modify "$CONNECTION_NAME" ipv4.dns "1.1.1.1"
 #nmcli connection modify "$CONNECTION_NAME" ipv4.ignore-auto-dns yes
-dhclient -v usb0
-udhcpc -i usb0
-route add -net 0.0.0.0 usb0
+#dhclient -v usb0
+#udhcpc -i usb0
+#route add -net 0.0.0.0 usb0
