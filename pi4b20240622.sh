@@ -8,4 +8,4 @@ sudo ./configure
 sudo make && sudo make check && sudo make install
 cd ..
 7z x Fan_HAT.7z  -r -o./Fan_HAT
-sed -i '2i /root/Fan_HAT/python/main.py' /etc/rc.local
+sed -i '2i sudo nohup python3 /root/Fan_HAT/python/main.py >dev/null 2>&1 &' /etc/rc.local
