@@ -39,6 +39,6 @@ sed -i "s|^PrivateKey = .*|PrivateKey = $PrivateKey|" /etc/wireguard/wg0.conf
 sed -i "s|^PublicKey = .*|PublicKey = $PublicKey |" /etc/wireguard/wg0.conf
 sed -i "s|^PresharedKey = .*|PresharedKey = $PresharedKey |" /etc/wireguard/wg0.conf
 sed -i "s|^Endpoint = .*|Endpoint = $Endpoint|" /etc/wireguard/wg0.conf
-systemctl enable wg-quick@wg0
 systemctl daemon-reload
+systemctl enable wg-quick@wg0
 systemctl enable stream.service
